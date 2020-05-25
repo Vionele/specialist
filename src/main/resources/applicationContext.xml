@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="p1" class="ex.sveta.specialist.Point">
+        <constructor-arg name="x" value="10"/>
+        <constructor-arg name="y" value="15"/>
+    </bean>
+
+    <bean id="p2" class="ex.sveta.specialist.Point">
+        <property name="x" value="3"/>
+        <property name="y" value="6"/>
+    </bean>
+
+    <bean id="c1" class="ex.sveta.specialist.Circle">
+        <property name="x" value="3"/>
+        <property name="y" value="6"/>
+        <property name="r" value="8.888"/>
+    </bean>
+
+    <bean id="c2" class="ex.sveta.specialist.Circle">
+        <constructor-arg name="x" value="4"/>
+        <constructor-arg name="y" value="8"/>
+        <constructor-arg name="r" ref="radius"/>
+    </bean>
+
+    <bean name="canvas" class="ex.sveta.specialist.Canvas">
+        <constructor-arg name="shapes">
+            <list>
+                <ref bean="p1"/>
+                <ref bean="p2"/>
+                <ref bean="c1"/>
+                <ref bean="c2"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean name="radius" class="java.lang.Double" >
+        <constructor-arg index="0" value="13.33"/>
+    </bean>
+</beans>
